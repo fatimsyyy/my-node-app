@@ -1,0 +1,338 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+:root {
+  --bg_main: linear-gradient(135deg, #cdb4db, hwb(209 64% 0%));
+  --text_light: #fff;
+  --text_med: #5c5a68;
+  --text_dark: #3a3a4a;
+  --pink: #ffc8dd;
+  --dark_pink: #ffafcc;
+  --light_blue: #bde0fe;
+  --blue: #a2d2ff;
+  --glass-bg: rgba(255, 255, 255, 0.15);
+  --shadow: rgba(0, 0, 0, 0.1);
+  --gradient-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-weight: normal;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  background: var(--bg_main);
+  color: var(--text_dark);
+  padding: 70px;
+}
+
+/* Kontejner */
+.container {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+/* Heading */
+.heading {
+  font-weight: 600;
+  font-size: 4rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text_light);
+  text-shadow: 2px 2px 10px var(--shadow);
+  padding-bottom: 30px;
+}
+.ajax-section .cities {
+  opacity: 0;
+  transition: opacity 0.5s ease-in;
+}
+
+/* Dugmad */
+button {
+  cursor: pointer;
+  padding: 12px 24px;
+  font-size: 1rem;
+  border-radius: 12px;
+  background: var(--dark_pink);
+  color: var(--text_light);
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 4px 10px var(--shadow);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+button:hover {
+  background: var(--blue);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px var(--shadow);
+}
+
+/* Forma */
+.top-banner form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.top-banner form input,
+.top-banner form button {
+  width: 100%;
+  padding: 12px;
+  border-radius: 6px;
+}
+
+.top-banner form button {
+  margin-top: 15px;
+}
+
+/* AJAX Sekcija */
+.ajax-section {
+  margin: 70px 0 20px;
+}
+
+.ajax-section .cities {
+  display: grid;
+  grid-gap: 32px 20px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+/* GRAD KARTICA (Glassmorphism) */
+.ajax-section .city {
+  position: relative;
+  padding: 25px 8%;
+  border-radius: 20px;
+  background: var(--gradient-glass);
+  color: var(--text_light);
+  backdrop-filter: blur(15px);
+  box-shadow: 0 4px 20px var(--shadow);
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+/* Efekat svjetla na hover */
+.ajax-section .city:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2);
+}
+.ajax-section {
+  max-width: 600px; /* ili koliko ti paše, možeš probati 500px, 700px... */
+  margin: 0 auto;   /* centriranje */
+  padding: 20px;
+}
+
+.ajax-section .city::after {
+  content: '';
+  width: 600px;
+  height: 100%;
+  background: radial-gradient(rgba(255, 255, 255, 0.1), transparent);
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0.3;
+}
+
+/* Grad i temperatura */
+.ajax-section .city-name {
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.ajax-section .city-temp {
+  font-size: 4rem;
+  font-weight: 700;
+  color: var(--text_light);
+}
+
+/* Grad simbol */
+.ajax-section .city sup {
+  font-size: 0.6em;
+}
+
+.ajax-section .city-name sup {
+  padding: 0.3em 0.8em;
+  border-radius: 30px;
+  color: var(--text_light);
+  background: var(--pink);
+  font-weight: 600;
+}
+
+/* Nova prozirna traka s dodatnim podacima */
+.ajax-section .city-info {
+  background: rgba(255, 255, 255, 0.15);
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 0.9rem;
+  margin-top: 15px;
+}
+
+/* Ikone */
+.ajax-section .city-icon {
+  margin-top: 10px;
+  width: 80px;
+  height: 80px;
+  filter: drop-shadow(0 2px 8px var(--shadow));
+}
+
+/* Animirani efekat talasa (čisto za luksuzni izgled) */
+.ajax-section .city::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 200%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 10%, transparent 70%);
+  transform: translateX(-50%);
+  opacity: 0.3;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .heading {
+    font-size: 3rem;
+  }
+
+  .ajax-section .cities {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+}
+
+.cities {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.city {
+  background: rgba(255, 200, 221, 0.8);
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease-in-out;
+}
+
+.city:hover {
+  transform: scale(1.05);
+}
+
+.city-temp {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.city-icon {
+  width: 70px;
+}
+
+
+
+.forecast-section {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.forecast-day {
+  background-color: rgba(255, 255, 255, 0.8);
+  margin: 10px auto;
+  padding: 12px;
+  border-radius: 15px;
+  width: 80%;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.forecast-day h4 {
+  margin-bottom: 5px;
+  font-weight: 600;
+}
+
+
+
+
+.weather-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin: 40px auto;
+  max-width: 400px;
+  padding: 16px;
+  background: transparent;
+  border-radius: 20px;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.weather-form input[type="text"] {
+  flex: 1;
+  padding: 12px 16px;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  background-color: #f2f2f2;
+  box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.weather-form input[type="text"]:focus {
+  outline: none;
+  background: linear-gradient(135deg, #cdb4db, hwb(209 64% 0%));
+  box-shadow: 0 0 5px rgba(30, 144, 255, 0.4);
+  color: #333;
+}
+
+.weather-form button {
+  padding: 12px 20px;
+  font-size: 16px;
+  background: linear-gradient(135deg, #a2d2ff, #cdb4db);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  position: center;
+  transition: background 0.3s ease, transform 0.2s;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.weather-form button:hover {
+  background: linear-gradient(135deg, #bde0fe, #d8c2e6);
+  transform: translateY(-2px);
+}
+
+
+
+
+.forecast-section {
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  background-color: #f9f9f9;
+}
+
+.forecast-day {
+  margin-bottom: 15px;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.forecast-day h4 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.forecast-day img {
+  margin-right: 10px;
+}
+
+.forecast-day p {
+  margin: 5px 0;
+  font-size: 14px;
+}
+
